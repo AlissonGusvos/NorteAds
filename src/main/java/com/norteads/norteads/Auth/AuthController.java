@@ -1,13 +1,14 @@
 package com.norteads.norteads.Auth;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.norteads.norteads.Auth.RequestDTO.RegisterRequest;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-
+    @PostMapping("/register")
+    public ResponseStatus userRegister(@RequestBody RegisterRequest request){
+    }
 
 }
