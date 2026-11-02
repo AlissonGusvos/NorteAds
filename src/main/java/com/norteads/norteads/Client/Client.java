@@ -1,4 +1,4 @@
-package com.norteads.norteads.Auth.Client;
+package com.norteads.norteads.Client;
 
 import com.norteads.norteads.User.User;
 import jakarta.persistence.*;

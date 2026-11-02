@@ -1,4 +1,4 @@
-package com.norteads.norteads.Auth.Client;
+package com.norteads.norteads.Client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
