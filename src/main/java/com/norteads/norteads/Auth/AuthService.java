@@ -1,5 +1,6 @@
 package com.norteads.norteads.Auth;
 
+import com.norteads.norteads.Auth.RequestDTO.LoginRequest;
 import com.norteads.norteads.Auth.RequestDTO.RegisterRequest;
 import com.norteads.norteads.ConfigMethods.HashPassword;
 import com.norteads.norteads.ConfigMethods.IdGenerator;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class AuthService {
@@ -48,4 +50,17 @@ public class AuthService {
         return ResponseEntity.status(200).body("Registrado com sucesso");
     }
 
+    public ResponseEntity<?> userLogin(LoginRequest request){
+        Optional<User> optionalUser = userRepository.findByEmail(request.email());
+        if (optionalUser.isEmpty()){
+            return ResponseEntity.status(401).body("E-mail ou senha inválidos");
+        }
+
+        User user = optionalUser.get();
+        if (!hashPassword.passwordEncoder().matches(request.password(), user.getHashPassword())){
+            return ResponseEntity.status(401).body("E-mail ou senha inválidos");
+        }
+
+        return ResponseEntity.status(200).body("Logado");
+    }
 }

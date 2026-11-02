@@ -1,5 +1,6 @@
 package com.norteads.norteads.Auth;
 
+import com.norteads.norteads.Auth.RequestDTO.LoginRequest;
 import com.norteads.norteads.Auth.RequestDTO.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,11 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> userRegister(@RequestBody RegisterRequest request){
         return authService.userRegister(request);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> userLogin(@RequestBody LoginRequest request){
+        return authService.userLogin(request);
     }
 
 }
